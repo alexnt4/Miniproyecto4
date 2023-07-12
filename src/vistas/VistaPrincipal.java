@@ -170,7 +170,8 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     }                                             
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {   
-        actualizarListarComboboxes();                                         
+        actualizarListarComboboxes();
+        controlador.setOperacion(Operaciones.ELIMINAR);                                        
         this.dispose();
         menuEliminar.setVisible(true);
     }                                           
@@ -249,6 +250,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         actualizarListarComboboxes();
         // agregar el action listener a cada boton
         this.menuInsertar.btnGuardar.addActionListener(controlador);
+        this.menuEliminar.btnEliminar.addActionListener(controlador);
 
        setVisible(true);
     }
@@ -269,9 +271,9 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     }
 
     @Override
-    public void eliminarTraje() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eliminarTraje'");
+    public String eliminarTraje() {
+        String nombreAEliminar = (String) this.menuEliminar.cmbTrajes.getSelectedItem();
+        return nombreAEliminar; 
     }
 
     @Override

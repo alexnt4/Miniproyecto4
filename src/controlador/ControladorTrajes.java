@@ -1,4 +1,5 @@
 package controlador;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -6,8 +7,6 @@ import javax.naming.event.ObjectChangeListener;
 
 import modelo.Modelo;
 import vistas.IVista;
-
-
 
 public class ControladorTrajes implements ActionListener {
     Modelo modelo;
@@ -19,11 +18,11 @@ public class ControladorTrajes implements ActionListener {
         this.vista = vista;
     }
 
-    public void inicializacion(){
+    public void inicializacion() {
         vista.iniciar(this);
     }
 
-    public String[] getNombresTrajes(){
+    public String[] getNombresTrajes() {
         return modelo.nombresTrajes();
     }
 
@@ -41,30 +40,26 @@ public class ControladorTrajes implements ActionListener {
             case INSERTAR:
                 Object[] datos = vista.insertarTraje();
                 modelo.InsertarTrajes(String.valueOf(datos[0]), String.valueOf(datos[1]),
-                 String.valueOf(datos[2]), Double.parseDouble(datos[3].toString()));
-                 System.out.println("se guardo");
+                        String.valueOf(datos[2]), Double.parseDouble(datos[3].toString()));
+                System.out.println("se guardo");
                 break;
             case ACTUALIZAR:
-                    
-                    break;
+
+                break;
             case ELIMINAR:
-                        
-                    break;
+                modelo.Eliminar(vista.eliminarTraje());
+                break;
             case BUSCAR:
-                            
-                    break;
+
+                break;
             case LISTAR:
-                                
-                    break;
+
+                break;
             case COMPRAR:
-                            
-                    break;
+
+                break;
             default:
                 break;
-        }      
+        }
     }
 }
-
-
-
-
