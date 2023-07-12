@@ -28,6 +28,16 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         menuEliminar.cmbTrajes.setModel(new javax.swing.DefaultComboBoxModel<>(nombresTrajes));
         menuComprar.cmbTrajes.setModel(new javax.swing.DefaultComboBoxModel<>(nombresTrajes));
         menuActualizar.cmbTrajes.setModel(new javax.swing.DefaultComboBoxModel<>(nombresTrajes));
+        limpiarCampos();
+    }
+
+    public void limpiarCampos(){
+        menuInsertar.limpiarCampos();
+        menuActualizar.limpiarCampos();
+        menuEliminar.limpiarCampos();
+        menuBuscar.limpiarCampos();
+        menuListar.limpiarCampos();
+        menuComprar.limpiarCampos();
     }
 
     /**
@@ -179,7 +189,8 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     }                                           
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {   
-        actualizarListarComboboxes();                                       
+        actualizarListarComboboxes();
+        controlador.setOperacion(Operaciones.BUSCAR);                                       
         this.dispose();
         menuBuscar.setVisible(true);
     }                                         
@@ -253,7 +264,12 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         // agregar el action listener a cada boton
         this.menuInsertar.btnGuardar.addActionListener(controlador);
         this.menuEliminar.btnEliminar.addActionListener(controlador);
+
         this.menuActualizar.btnActualizar.addActionListener(controlador);
+
+        this.menuBuscar.btnBuscar.addActionListener(controlador);
+        this.menuBuscar.txtInformacionTraje.setEditable(false);
+
 
        setVisible(true);
     }
@@ -285,9 +301,16 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     }
 
     @Override
-    public void buscarTraje() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarTraje'");
+    public String buscarTraje() {
+        String nombreABuscar = this.menuBuscar.txtNombreBuscar.getText();
+        return nombreABuscar;
+    }
+    public void setInformacionBusqueda(String informacion){
+        String[] datosTraje = informacion.split(";");
+
+        String textoFormateado = String.format("Nombre: %s\nPais: %s\nMaterial: %s\nPrecio: %s",
+                             datosTraje[0], datosTraje[1], datosTraje[2], datosTraje[3]);
+        this.menuBuscar.txtInformacionTraje.setText(textoFormateado);
     }
 
     @Override

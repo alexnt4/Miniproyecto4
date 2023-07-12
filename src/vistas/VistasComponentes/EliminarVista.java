@@ -9,6 +9,8 @@ public class EliminarVista extends javax.swing.JFrame {
         this.vista = vista;
         initComponents();
     }
+    public void limpiarCampos(){
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

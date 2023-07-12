@@ -53,6 +53,7 @@ public class ControladorTrajes implements ActionListener {
                 modelo.Eliminar(vista.eliminarTraje());
                 break;
             case BUSCAR:
+                vista.setInformacionBusqueda(modelo.Buscar(vista.buscarTraje()));
 
                 break;
             case LISTAR:

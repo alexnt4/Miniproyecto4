@@ -16,6 +16,9 @@ public class VistaListar extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void limpiarCampos(){
+    }
+
     public void rellenarTabla(){
         String[] headers = {"Nombre", "País", "Material", "Precio"};
         String[][] data = listarDatos();
