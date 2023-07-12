@@ -15,6 +15,13 @@ public class VistaActualizar extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void limpiarCampos(){
+        txtNombre.setText("");
+        txtPais.setText("");
+        txtMaterial.setText("");
+        txtPrecio.setText("");
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
