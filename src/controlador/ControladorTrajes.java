@@ -2,6 +2,8 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.naming.event.ObjectChangeListener;
+
 import modelo.Modelo;
 import vistas.IVista;
 
@@ -33,7 +35,10 @@ public class ControladorTrajes implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (operacion) {
             case INSERTAR:
-                vista.insertarTraje();
+                Object[] datos = vista.insertarTraje();
+                modelo.InsertarTrajes(String.valueOf(datos[0]), String.valueOf(datos[1]),
+                 String.valueOf(datos[2]), Double.parseDouble(datos[3].toString()));
+                 System.out.println("se guardo");
                 break;
             case ACTUALIZAR:
                     
