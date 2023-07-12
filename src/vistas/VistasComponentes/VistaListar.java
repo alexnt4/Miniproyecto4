@@ -5,6 +5,8 @@ import vistas.VistaPrincipal;
 public class VistaListar extends javax.swing.JFrame {
 
     VistaPrincipal vista;
+
+    
     public VistaListar(VistaPrincipal vista) {
         this.vista = vista;
         initComponents();
