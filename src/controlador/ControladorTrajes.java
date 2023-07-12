@@ -33,7 +33,7 @@ public class ControladorTrajes implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (operacion) {
             case INSERTAR:
-
+                vista.insertarTraje();
                 break;
             case ACTUALIZAR:
                     
