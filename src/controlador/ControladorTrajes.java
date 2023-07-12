@@ -13,6 +13,7 @@ public class ControladorTrajes implements ActionListener {
     IVista vista;
     Operaciones operacion;
 
+    
     public ControladorTrajes(Modelo modelo, IVista vista) {
         this.modelo = modelo;
         this.vista = vista;
