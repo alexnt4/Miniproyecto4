@@ -44,7 +44,10 @@ public class ControladorTrajes implements ActionListener {
                 System.out.println("se guardo");
                 break;
             case ACTUALIZAR:
-
+                Object[] datos2 = vista.actualizarTraje();
+                String trajeActulizar = vista.getNombreTrajeActualizar();
+                Modelo.Modificar(trajeActulizar,String.valueOf(datos2[0]), String.valueOf(datos2[1]),
+                String.valueOf(datos2[2]), Double.parseDouble(datos2[3].toString())); 
                 break;
             case ELIMINAR:
                 modelo.Eliminar(vista.eliminarTraje());

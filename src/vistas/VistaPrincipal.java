@@ -11,6 +11,7 @@ import vistas.VistasComponentes.VistaListar;
 
 public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     ControladorTrajes controlador;
+    String nombreTrajeActualizar;
     
     VistaInsertar menuInsertar = new VistaInsertar(this);
     VistaActualizar menuActualizar = new VistaActualizar(this);
@@ -165,6 +166,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {                                              
         actualizarListarComboboxes();
+        controlador.setOperacion(Operaciones.ACTUALIZAR);
         this.dispose();
         menuActualizar.setVisible(true);
     }                                             
@@ -251,6 +253,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         // agregar el action listener a cada boton
         this.menuInsertar.btnGuardar.addActionListener(controlador);
         this.menuEliminar.btnEliminar.addActionListener(controlador);
+        this.menuActualizar.btnActualizar.addActionListener(controlador);
 
        setVisible(true);
     }
@@ -266,8 +269,13 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     }
 
     @Override
-    public void actualizarTraje() {
-        
+    public Object[] actualizarTraje() {
+        nombreTrajeActualizar = this.menuActualizar.cmbTrajes.getSelectedItem().toString();
+        String nombreTraje = this.menuActualizar.txtNombre.getText();
+        String pais = this.menuActualizar.txtPais.getText();
+        String material = this.menuActualizar.txtMaterial.getText();
+        Double precio = Double.parseDouble(this.menuActualizar.txtPrecio.getText());
+        return new Object[] {nombreTraje, pais, material, precio}; 
     }
 
     @Override
@@ -292,5 +300,10 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     public void comprarTraje() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'comprarTraje'");
+    }
+
+    @Override
+    public String getNombreTrajeActualizar() {
+        return nombreTrajeActualizar;
     }
 }
