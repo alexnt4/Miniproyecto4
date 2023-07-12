@@ -203,7 +203,8 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     }                                         
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {  
-        actualizarListarComboboxes();                                         
+        actualizarListarComboboxes();         
+        controlador.setOperacion(Operaciones.COMPRAR);                                
         this.dispose();
         menuComprar.setVisible(true);
     }                                          
@@ -270,6 +271,8 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         this.menuBuscar.btnBuscar.addActionListener(controlador);
         this.menuBuscar.txtInformacionTraje.setEditable(false);
 
+        this.menuComprar.btnComprar.addActionListener(controlador);
+
 
        setVisible(true);
     }
@@ -305,12 +308,22 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         String nombreABuscar = this.menuBuscar.txtNombreBuscar.getText();
         return nombreABuscar;
     }
-    public void setInformacionBusqueda(String informacion){
-        String[] datosTraje = informacion.split(";");
+    public void setInformacionBusqueda(String informacion, boolean validar){
+        if(validar == true){
+            String[] datosCompra = informacion.split(";");
+            String textoFormateado = String.format("Nombre: %s\nPais: %s\nMaterial: %s\nPrecio: %s",
+                                datosCompra[0], datosCompra[1], datosCompra[2], datosCompra[3]);
+            String textoanterio = menuComprar.jTextArea1.getText();
+            this.menuComprar.jTextArea1.setText(textoanterio+"\n\n"+textoFormateado);
 
-        String textoFormateado = String.format("Nombre: %s\nPais: %s\nMaterial: %s\nPrecio: %s",
-                             datosTraje[0], datosTraje[1], datosTraje[2], datosTraje[3]);
-        this.menuBuscar.txtInformacionTraje.setText(textoFormateado);
+        }else{
+            String[] datosTraje = informacion.split(";");
+            String textoFormateado = String.format("Nombre: %s\nPais: %s\nMaterial: %s\nPrecio: %s",
+                                datosTraje[0], datosTraje[1], datosTraje[2], datosTraje[3]);
+            this.menuBuscar.txtInformacionTraje.setText(textoFormateado);
+
+        }
+        
     }
 
     @Override
@@ -319,10 +332,11 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         throw new UnsupportedOperationException("Unimplemented method 'listarTrajes'");
     }
 
-    @Override
-    public void comprarTraje() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'comprarTraje'");
+    public Object[] comprarTraje() {
+        String nombre = this.menuComprar.cmbTrajes.getSelectedItem().toString();
+        int cantidad = (int) this.menuComprar.spCantidad.getValue();
+        System.out.println("Entró a añadir carrito");
+        return new Object[] {nombre, cantidad};
     }
 
     @Override

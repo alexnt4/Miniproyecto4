@@ -9,11 +9,11 @@ public interface IVista {
     public String eliminarTraje();
     public String buscarTraje();
     public void listarTrajes();
-    public void comprarTraje();
+    public Object[] comprarTraje();
 
 
     public String getNombreTrajeActualizar();
   
-    public void setInformacionBusqueda(String informacion);
+    public void setInformacionBusqueda(String informacion, boolean validar);
 
 }

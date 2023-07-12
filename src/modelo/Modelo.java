@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 public class Modelo {
     
-    private String nombre, paisFabricacion, material, datos = " ", nombreBuscar;
+    private String nombre, paisFabricacion, material, datos = " ", nombreBuscar, factura = " ";
     private Double precio, total;
     private int cantidad;
     // Constructor de por defecto
@@ -285,9 +285,9 @@ public class Modelo {
             }
         }
     }
-    public double comprar(String nombreBuscar, int cantidad) {
+    public String Comprar(String nombreBuscar, int cantidad) {
         FileReader fr = null;
-        boolean error = false;
+        boolean error = false, existe = false;
         double total = 0.0;
         
         try {
@@ -305,7 +305,8 @@ public class Modelo {
             String registro = "";
             BufferedReader br = new BufferedReader(fr);
             String tokens[];
-            boolean existe = false;
+            this.nombreBuscar = nombreBuscar;
+            this.cantidad = cantidad;
             
             try {
                 while ((registro = br.readLine()) != null) {
@@ -313,8 +314,21 @@ public class Modelo {
                     
                     if (tokens[0].equals(nombreBuscar)) {
                         existe = true;
-                        double valor = Double.parseDouble(tokens[4]);
+                        String nombre = tokens[0];
+                        String pais = tokens[1];
+                        String material = tokens[2];
+                        double valor = Double.parseDouble(tokens[3]);
                         total = valor * cantidad;
+                        tokens[3] = String.valueOf(total);
+                        factura = nombre +"\t"+pais+"\t"+ material+"\t"+precio+"\t"+cantidad;
+                        
+                        // Mostrar el nombre, cantidad y total en un JOptionPane
+                        JOptionPane.showMessageDialog(
+                            null,
+                            "Nombre: " + tokens[0] + "\nCantidad: " + cantidad + "\nTotal: " + total,
+                            "Detalle de Compra",
+                            JOptionPane.INFORMATION_MESSAGE);
+                        
                         break;
                     }
                 }
@@ -345,9 +359,8 @@ public class Modelo {
             }
         }
         
-        return total;
+        return factura;
     }
-    
     public String[] nombresTrajes() {
         FileReader fr = null;
         boolean error = false;

@@ -141,7 +141,7 @@ public class VistaComprar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    public javax.swing.JTextArea jTextArea1;
     public javax.swing.JSpinner spCantidad;
     // End of variables declaration                   
 }
