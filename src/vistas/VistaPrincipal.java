@@ -170,7 +170,8 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         menuBuscar.setVisible(true);
     }                                         
 
-    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {  
+        menuListar.rellenarTabla();                                        
         this.dispose();
         menuListar.setVisible(true);
     }                                         
@@ -249,8 +250,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
 
     @Override
     public void actualizarTraje() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actualizarTraje'");
+        
     }
 
     @Override
