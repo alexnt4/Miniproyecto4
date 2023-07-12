@@ -22,6 +22,13 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         initComponents();
     }
 
+    public void actualizarListarComboboxes(){
+        String[] nombresTrajes = controlador.getNombresTrajes();
+        menuEliminar.cmbTrajes.setModel(new javax.swing.DefaultComboBoxModel<>(nombresTrajes));
+        menuComprar.cmbTrajes.setModel(new javax.swing.DefaultComboBoxModel<>(nombresTrajes));
+        menuActualizar.cmbTrajes.setModel(new javax.swing.DefaultComboBoxModel<>(nombresTrajes));
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -148,7 +155,8 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         pack();
     }// </editor-fold>                        
 
-    private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {  
+    private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {
+        actualizarListarComboboxes();  
         controlador.setOperacion(Operaciones.INSERTAR);
         System.out.println("Operacion insertar");                                          
         this.dispose();
@@ -156,27 +164,32 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     }                                           
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        actualizarListarComboboxes();
         this.dispose();
         menuActualizar.setVisible(true);
     }                                             
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {   
+        actualizarListarComboboxes();                                         
         this.dispose();
         menuEliminar.setVisible(true);
     }                                           
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {   
+        actualizarListarComboboxes();                                       
         this.dispose();
         menuBuscar.setVisible(true);
     }                                         
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {  
+        actualizarListarComboboxes();
         menuListar.rellenarTabla();                                        
         this.dispose();
         menuListar.setVisible(true);
     }                                         
 
-    private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {  
+        actualizarListarComboboxes();                                         
         this.dispose();
         menuComprar.setVisible(true);
     }                                          
@@ -231,7 +244,9 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
 
     @Override
     public void iniciar(ControladorTrajes controlador) {
-       this.controlador = controlador;
+        
+        this.controlador = controlador;
+        actualizarListarComboboxes();
         // agregar el action listener a cada boton
         this.menuInsertar.btnGuardar.addActionListener(controlador);
 
