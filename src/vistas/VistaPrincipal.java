@@ -1,6 +1,7 @@
 package vistas;
 
 import controlador.ControladorTrajes;
+import controlador.Operaciones;
 import vistas.VistasComponentes.BuscarVista;
 import vistas.VistasComponentes.EliminarVista;
 import vistas.VistasComponentes.VistaActualizar;
@@ -147,7 +148,8 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         pack();
     }// </editor-fold>                        
 
-    private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {  
+        controlador.setOperacion(Operaciones.INSERTAR);                                          
         this.dispose();
         menuInsertar.setVisible(true);
     }                                           
@@ -233,8 +235,9 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
 
     @Override
     public void insertarTraje() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insertarTraje'");
+        // String nombre = this.menuInsertar.txtNombre.getText();
+        // String descripcion = this.menuInsertar..getText();
+        // String 
     }
 
     @Override
