@@ -6,6 +6,7 @@ public class VistaComprar extends javax.swing.JFrame {
 
    VistaPrincipal vista;
     public VistaComprar(VistaPrincipal vista) {
+        this.vista = vista;
         initComponents();
     }
 
@@ -125,7 +126,7 @@ public class VistaComprar extends javax.swing.JFrame {
     }                                          
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        this.dispose();
+        dispose();
         vista.setVisible(true);
     }                                           
 
