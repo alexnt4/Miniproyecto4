@@ -9,7 +9,14 @@ import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class VistaListar extends JFrame {
+    VistaPrincipal vista;
+
+    
+    public VistaListar(VistaPrincipal vista) {
+        this.vista = vista;
+        initComponents();
+    }
+
 
     private JTable table;
 
