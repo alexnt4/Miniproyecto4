@@ -282,7 +282,7 @@ public class Modelo {
         }
     }
 
-    public static void Listar(){
+    public static void ListarTrajes(){
 
     }
     
