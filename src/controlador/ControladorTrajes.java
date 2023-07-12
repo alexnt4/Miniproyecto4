@@ -23,6 +23,10 @@ public class ControladorTrajes implements ActionListener {
         vista.iniciar(this);
     }
 
+    public String[] getNombresTrajes(){
+        return modelo.nombresTrajes();
+    }
+
     public Operaciones getOperacion() {
         return operacion;
     }

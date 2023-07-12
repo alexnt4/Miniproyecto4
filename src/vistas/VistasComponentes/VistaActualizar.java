@@ -164,18 +164,18 @@ public class VistaActualizar extends javax.swing.JFrame {
     }                                           
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JComboBox<String> cmbTrajes;
+    public javax.swing.JButton btnActualizar;
+    public javax.swing.JButton btnCancelar;
+    public javax.swing.JComboBox<String> cmbTrajes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txtMaterial;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPais;
-    private javax.swing.JTextField txtPrecio;
+    public javax.swing.JTextField txtMaterial;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtPais;
+    public javax.swing.JTextField txtPrecio;
     // End of variables declaration                   
 }
