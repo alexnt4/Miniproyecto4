@@ -11,12 +11,12 @@ import vistas.VistasComponentes.VistaListar;
 public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     ControladorTrajes controlador;
     
-    VistaInsertar menuInsertar = new VistaInsertar();
-    VistaActualizar menuActualizar = new VistaActualizar();
-    EliminarVista menuEliminar = new EliminarVista();
-    BuscarVista menuBuscar = new BuscarVista();
-    VistaListar menuListar = new VistaListar();
-    VistaComprar menuComprar = new VistaComprar();
+    VistaInsertar menuInsertar = new VistaInsertar(this);
+    VistaActualizar menuActualizar = new VistaActualizar(this);
+    EliminarVista menuEliminar = new EliminarVista(this);
+    BuscarVista menuBuscar = new BuscarVista(this);
+    VistaListar menuListar = new VistaListar(this);
+    VistaComprar menuComprar = new VistaComprar(this);
     public VistaPrincipal() {
         initComponents();
     }
@@ -153,23 +153,28 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     }                                           
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        
+        this.dispose();
+        menuActualizar.setVisible(true);
     }                                             
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
+        this.dispose();
+        menuEliminar.setVisible(true);
     }                                           
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
+        this.dispose();
+        menuBuscar.setVisible(true);
     }                                         
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
+        this.dispose();
+        menuListar.setVisible(true);
     }                                         
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+        this.dispose();
+        menuComprar.setVisible(true);
     }                                          
 
     /**
