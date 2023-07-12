@@ -16,6 +16,13 @@ public class VistaListar extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void rellenarTabla(){
+        String[] headers = {"Nombre", "País", "Material", "Precio"};
+        String[][] data = listarDatos();
+        DefaultTableModel model = new DefaultTableModel(data, headers);
+        tblListaTrajes.setModel(model);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,10 +43,7 @@ public class VistaListar extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Lista de Trajes");
 
-        String[] headers = {"Nombre", "País", "Material", "Precio"};
-        String[][] data = listarDatos();
-        DefaultTableModel model = new DefaultTableModel(data, headers);
-        tblListaTrajes.setModel(model);
+
 
         jScrollPane1.setViewportView(tblListaTrajes);
 

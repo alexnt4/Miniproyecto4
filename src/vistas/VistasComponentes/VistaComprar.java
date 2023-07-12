@@ -1,5 +1,11 @@
 package vistas.VistasComponentes;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+import javax.swing.table.DefaultTableModel;
+
 import vistas.VistaPrincipal;
 
 public class VistaComprar extends javax.swing.JFrame {
@@ -8,6 +14,37 @@ public class VistaComprar extends javax.swing.JFrame {
     public VistaComprar(VistaPrincipal vista) {
         this.vista = vista;
         initComponents();
+    }
+
+
+    public void rellenarTabla(){
+        String[] headers = {"Nombre", "País", "Material", "Precio"};
+        String[][] data = listarDatos();
+        DefaultTableModel model = new DefaultTableModel(data, headers);
+        tblCarito.setModel(model);
+    }
+    public String[][] listarDatos() {
+        ArrayList<String[]> datosList = new ArrayList<>();
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("Datos.csv"));
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] tokens = line.split(";");
+                datosList.add(tokens);
+            }
+
+            br.close();
+        } catch (Exception e) {
+            // Manejo de errores
+            e.printStackTrace();
+        }
+
+        String[][] datosArray = new String[datosList.size()][];
+        datosList.toArray(datosArray);
+
+        return datosArray;
     }
 
     /**
