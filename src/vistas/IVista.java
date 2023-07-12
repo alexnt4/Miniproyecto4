@@ -4,7 +4,7 @@ import controlador.ControladorTrajes;
 
 public interface IVista {
     public void iniciar(ControladorTrajes controlador);
-    public void insertarTraje();
+    public Object[] insertarTraje();
     public void actualizarTraje();
     public void eliminarTraje();
     public void buscarTraje();

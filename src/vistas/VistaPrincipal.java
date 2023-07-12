@@ -149,7 +149,8 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     }// </editor-fold>                        
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {  
-        controlador.setOperacion(Operaciones.INSERTAR);                                          
+        controlador.setOperacion(Operaciones.INSERTAR);
+        System.out.println("Operacion insertar");                                          
         this.dispose();
         menuInsertar.setVisible(true);
     }                                           
@@ -230,14 +231,20 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     @Override
     public void iniciar(ControladorTrajes controlador) {
        this.controlador = controlador;
+        // agregar el action listener a cada boton
+        this.menuInsertar.btnGuardar.addActionListener(controlador);
+
        setVisible(true);
     }
 
     @Override
-    public void insertarTraje() {
-        // String nombre = this.menuInsertar.txtNombre.getText();
-        // String descripcion = this.menuInsertar..getText();
-        // String 
+    public Object[] insertarTraje() {
+        String nombre = this.menuInsertar.txtNombre.getText();
+        String pais = this.menuInsertar.txtPais.getText();
+        String material = this.menuInsertar.txtMaterial.getText();
+        Double precio = Double.parseDouble(this.menuInsertar.txtPrecio.getText());
+        System.out.println("Se retornan los datos");
+        return new Object[] {nombre, pais, material, precio};
     }
 
     @Override
