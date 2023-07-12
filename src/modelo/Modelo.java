@@ -281,6 +281,10 @@ public class Modelo {
             }
         }
     }
+
+    public static void Listar(){
+
+    }
     
 }
 
