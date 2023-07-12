@@ -37,7 +37,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         menuEliminar.limpiarCampos();
         menuBuscar.limpiarCampos();
         menuListar.limpiarCampos();
-        menuComprar.limpiarCampos();
+        //menuComprar.limpiarCampos();
     }
 
     /**
