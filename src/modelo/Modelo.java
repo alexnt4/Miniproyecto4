@@ -131,7 +131,7 @@ public class Modelo {
 
     
     //metodo eliminar 
-    public static void Eliminar(String nombreBuscar) {
+    public void Eliminar(String nombreBuscar) {
         ArrayList<String> registros = new ArrayList<>();
         FileReader fr = null;
         boolean error = false;
@@ -157,7 +157,7 @@ public class Modelo {
                 while ((registro = br.readLine()) != null) {
                     tokens = registro.split(";");
 
-                    if (tokens[1].equals(nombreBuscar)) {
+                    if (tokens[0].equals(nombreBuscar)) {
                         existe = true;
                     } else {
                         registros.add(registro);
@@ -231,12 +231,12 @@ public class Modelo {
                 while ((registro = br.readLine()) != null) {
                     tokens = registro.split(";");
     
-                    if (tokens[1].equals(nombreBuscar)) {
+                    if (tokens[0].equals(nombreBuscar)) {
                         existe = true;
-                        tokens[1] = nuevoNombre;
-                        tokens[2] = nuevoPais;
-                        tokens[3] = nuevoMaterial;
-                        tokens[4] = String.valueOf(nuevoPrecio);
+                        tokens[0] = nuevoNombre;
+                        tokens[1] = nuevoPais;
+                        tokens[2] = nuevoMaterial;
+                        tokens[3] = String.valueOf(nuevoPrecio);
                         registro = String.join(";", tokens);
                     }
     
