@@ -53,14 +53,19 @@ public class ControladorTrajes implements ActionListener {
                 modelo.Eliminar(vista.eliminarTraje());
                 break;
             case BUSCAR:
-                vista.setInformacionBusqueda(modelo.Buscar(vista.buscarTraje()));
+                vista.setInformacionBusqueda(modelo.Buscar(vista.buscarTraje()),false);
 
                 break;
             case LISTAR:
 
                 break;
             case COMPRAR:
+                Object[] inf = vista.comprarTraje();
+                int valor = Integer.parseInt(inf[1].toString());
+                modelo.Comprar(String.valueOf(inf[0]), valor);
 
+                vista.setInformacionBusqueda(modelo.Buscar(String.valueOf(inf[0])),true);
+                System.out.println("se guardo");
                 break;
             default:
                 break;
