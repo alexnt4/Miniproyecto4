@@ -11,7 +11,8 @@ import javax.swing.JOptionPane;
 public class Modelo {
     
     private String nombre, paisFabricacion, material, datos, nombreBuscar;
-    private Double precio;
+    private Double precio, total;
+    private int cantidad;
     // Constructor de por defecto
     public Modelo(){
 
@@ -282,6 +283,122 @@ public class Modelo {
             }
         }
     }
+    public double comprar(String nombreBuscar, int cantidad) {
+        FileReader fr = null;
+        boolean error = false;
+        double total = 0.0;
+        
+        try {
+            fr = new FileReader("Datos.csv");
+        } catch (Exception e) {
+            error = true;
+            JOptionPane.showMessageDialog(
+                null, 
+                "Error al abrir el archivo\n" + e, 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+        }
+        
+        if (!error) {
+            String registro = "";
+            BufferedReader br = new BufferedReader(fr);
+            String tokens[];
+            boolean existe = false;
+            
+            try {
+                while ((registro = br.readLine()) != null) {
+                    tokens = registro.split(";");
+                    
+                    if (tokens[1].equals(nombreBuscar)) {
+                        existe = true;
+                        double valor = Double.parseDouble(tokens[4]);
+                        total = valor * cantidad;
+                        break;
+                    }
+                }
+                
+                if (!existe) {
+                    JOptionPane.showMessageDialog(
+                        null, 
+                        "El traje " + nombreBuscar + " no existe.", 
+                        "Advertencia", 
+                        JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(
+                    null, 
+                    "Error al leer el archivo\n" + e, 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+            }
+            
+            try {
+                fr.close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(
+                    null, 
+                    "Error al cerrar el archivo\n" + e, 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
+        return total;
+    }
+    
+    public String[] nombresTrajes() {
+        FileReader fr = null;
+        boolean error = false;
+        String[] trajes = null;
+        
+        try {
+            fr = new FileReader("Datos.csv");
+        } catch (Exception e) {
+            error = true;
+            JOptionPane.showMessageDialog(
+                null, 
+                "Error al abrir el archivo\n" + e, 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+        }
+        
+        if (!error) {
+            ArrayList<String> nombresList = new ArrayList<>();
+            String registro = "";
+            BufferedReader br = new BufferedReader(fr);
+            String[] tokens;
+            
+            try {
+                while ((registro = br.readLine()) != null) {
+                    tokens = registro.split(";");
+                    nombresList.add(tokens[0]);
+                }
+                
+                trajes = new String[nombresList.size()];
+                nombresList.toArray(trajes);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(
+                    null, 
+                    "Error al leer el archivo\n" + e, 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+            }
+            
+            try {
+                fr.close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(
+                    null, 
+                    "Error al cerrar el archivo\n" + e, 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
+        return trajes;
+    }
+    
+ 
     
     
     
