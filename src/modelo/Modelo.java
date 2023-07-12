@@ -90,7 +90,7 @@ public class Modelo {
                     //System.out.println(registro);
                     tokens = registro.split(";");
                     
-                    if (tokens[1].equals(nombreBuscar)) { //aqui modificar
+                    if (tokens[0].equals(nombreBuscar)) { //aqui modificar
                         existe = true;
                         for (int i = 0; i < tokens.length; i++) {
                             datos += tokens[i]+";";
@@ -309,7 +309,7 @@ public class Modelo {
                 while ((registro = br.readLine()) != null) {
                     tokens = registro.split(";");
                     
-                    if (tokens[1].equals(nombreBuscar)) {
+                    if (tokens[0].equals(nombreBuscar)) {
                         existe = true;
                         double valor = Double.parseDouble(tokens[4]);
                         total = valor * cantidad;
