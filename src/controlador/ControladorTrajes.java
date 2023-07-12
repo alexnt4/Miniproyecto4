@@ -17,6 +17,10 @@ public class ControladorTrajes implements ActionListener {
         this.vista = vista;
     }
 
+    public void inicializacion(){
+        vista.iniciar(this);
+    }
+
     public Operaciones getOperacion() {
         return operacion;
     }
