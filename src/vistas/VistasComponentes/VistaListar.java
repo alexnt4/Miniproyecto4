@@ -1,5 +1,11 @@
 package vistas.VistasComponentes;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+import javax.swing.table.DefaultTableModel;
+
 import vistas.VistaPrincipal;
 
 public class VistaListar extends javax.swing.JFrame {
@@ -24,19 +30,17 @@ public class VistaListar extends javax.swing.JFrame {
         tblListaTrajes = new javax.swing.JTable();
         btnCancelar = new javax.swing.JButton();
 
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Lista de Trajes");
 
-        tblListaTrajes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        String[] headers = {"Nombre", "País", "Material", "Precio"};
+        String[][] data = listarDatos();
+        DefaultTableModel model = new DefaultTableModel(data, headers);
+        tblListaTrajes.setModel(model);
 
-            },
-            new String [] {
-                "Nombre", "Pais", "Material", "Precio"
-            }
-        ));
         jScrollPane1.setViewportView(tblListaTrajes);
 
         btnCancelar.setText("Cancelar y volver al menu");
@@ -81,7 +85,31 @@ public class VistaListar extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                            
         this.dispose();
         vista.setVisible(true);
-    }                                           
+    }                   
+    
+    public String[][] listarDatos() {
+        ArrayList<String[]> datosList = new ArrayList<>();
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("Datos.csv"));
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] tokens = line.split(";");
+                datosList.add(tokens);
+            }
+
+            br.close();
+        } catch (Exception e) {
+            // Manejo de errores
+            e.printStackTrace();
+        }
+
+        String[][] datosArray = new String[datosList.size()][];
+        datosList.toArray(datosArray);
+
+        return datosArray;
+    }
 
 
     // Variables declaration - do not modify                     
