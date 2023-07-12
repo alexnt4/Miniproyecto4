@@ -7,7 +7,8 @@ public interface IVista {
     public Object[] insertarTraje();
     public void actualizarTraje();
     public String eliminarTraje();
-    public void buscarTraje();
+    public String buscarTraje();
     public void listarTrajes();
     public void comprarTraje();
+    public void setInformacionBusqueda(String informacion);
 }

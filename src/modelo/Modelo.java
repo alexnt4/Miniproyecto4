@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 public class Modelo {
     
-    private String nombre, paisFabricacion, material, datos, nombreBuscar;
+    private String nombre, paisFabricacion, material, datos = " ", nombreBuscar;
     private Double precio, total;
     private int cantidad;
     // Constructor de por defecto
@@ -87,12 +87,14 @@ public class Modelo {
             
             try {
                 while ((registro = br.readLine()) != null) {                    
-                    //System.out.println(registro);
+                    System.out.println(registro);
                     tokens = registro.split(";");
                     
                     if (tokens[0].equals(nombreBuscar)) { //aqui modificar
+                        System.out.println(tokens[0]);
                         existe = true;
                         for (int i = 0; i < tokens.length; i++) {
+                            System.out.println(tokens[i]);
                             datos += tokens[i]+";";
                             
                         }

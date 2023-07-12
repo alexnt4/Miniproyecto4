@@ -177,7 +177,8 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     }                                           
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {   
-        actualizarListarComboboxes();                                       
+        actualizarListarComboboxes();
+        controlador.setOperacion(Operaciones.BUSCAR);                                       
         this.dispose();
         menuBuscar.setVisible(true);
     }                                         
@@ -251,6 +252,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         // agregar el action listener a cada boton
         this.menuInsertar.btnGuardar.addActionListener(controlador);
         this.menuEliminar.btnEliminar.addActionListener(controlador);
+        this.menuBuscar.btnBuscar.addActionListener(controlador);
 
        setVisible(true);
     }
@@ -277,9 +279,16 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
     }
 
     @Override
-    public void buscarTraje() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarTraje'");
+    public String buscarTraje() {
+        String nombreABuscar = this.menuBuscar.txtNombreBuscar.getText();
+        return nombreABuscar;
+    }
+    public void setInformacionBusqueda(String informacion){
+        String[] datosTraje = informacion.split(";");
+
+        String textoFormateado = String.format("Nombre: %s\nPais: %s\nMaterial: %s\nPrecio: %s",
+                             datosTraje[0], datosTraje[1], datosTraje[2], datosTraje[3]);
+        this.menuBuscar.txtInformacionTraje.setText(textoFormateado);
     }
 
     @Override
