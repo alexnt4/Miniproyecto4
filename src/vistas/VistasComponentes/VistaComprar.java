@@ -15,6 +15,9 @@ public class VistaComprar extends javax.swing.JFrame {
         this.vista = vista;
         initComponents();
     }
+    public void limpiarCampos(){
+        spCantidad.setValue(0);
+    }
 
 
     public void rellenarTabla(){

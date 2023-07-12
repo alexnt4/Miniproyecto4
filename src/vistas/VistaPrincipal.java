@@ -27,6 +27,16 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         menuEliminar.cmbTrajes.setModel(new javax.swing.DefaultComboBoxModel<>(nombresTrajes));
         menuComprar.cmbTrajes.setModel(new javax.swing.DefaultComboBoxModel<>(nombresTrajes));
         menuActualizar.cmbTrajes.setModel(new javax.swing.DefaultComboBoxModel<>(nombresTrajes));
+        limpiarCampos();
+    }
+
+    public void limpiarCampos(){
+        menuInsertar.limpiarCampos();
+        menuActualizar.limpiarCampos();
+        menuEliminar.limpiarCampos();
+        menuBuscar.limpiarCampos();
+        menuListar.limpiarCampos();
+        menuComprar.limpiarCampos();
     }
 
     /**
@@ -253,6 +263,7 @@ public class VistaPrincipal extends javax.swing.JFrame implements IVista{
         this.menuInsertar.btnGuardar.addActionListener(controlador);
         this.menuEliminar.btnEliminar.addActionListener(controlador);
         this.menuBuscar.btnBuscar.addActionListener(controlador);
+        this.menuBuscar.txtInformacionTraje.setEditable(false);
 
        setVisible(true);
     }

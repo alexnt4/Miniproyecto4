@@ -9,6 +9,12 @@ public class VistaInsertar extends javax.swing.JFrame {
         this.vista = vista;
         initComponents();
     }
+    public void limpiarCampos() {
+        txtNombre.setText("");
+        txtPais.setText("");
+        txtMaterial.setText("");
+        txtPrecio.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -182,4 +188,5 @@ public class VistaInsertar extends javax.swing.JFrame {
     public javax.swing.JTextField txtPais;
     public javax.swing.JTextField txtPrecio;
     // End of variables declaration                   
+
 }
