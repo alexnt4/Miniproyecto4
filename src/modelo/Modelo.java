@@ -282,14 +282,15 @@ public class Modelo {
             }
         }
     }
+    
+    
+    
+    
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Modelo obj = new Modelo();
         obj.InsertarTrajes("sdf", "fsdf", "fsdf", 123132);
-    }
-    public void ListarTrajes(){
-     
-    }
+    }*/
     
 }
 
