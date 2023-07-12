@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -282,8 +283,9 @@ public class Modelo {
         }
     }
 
-    public static void ListarTrajes(){
 
+    public void ListarTrajes(){
+     
     }
     
 }
